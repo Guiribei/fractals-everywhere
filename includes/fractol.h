@@ -6,11 +6,11 @@
 /*   By: guribeir <guribeir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 01:20:04 by guribeir          #+#    #+#             */
-/*   Updated: 2022/07/17 17:57:04 by guribeir         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:08:22 by guribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
+#ifndef FRACTOL_H 
 # define FRACTOL_H
 # define WIDTH 900
 # define HEIGHT 900
