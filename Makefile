@@ -3,8 +3,9 @@ PATH_SRC = ./sources/
 PATH_OBJ = ./objects/
 
 SRC =	$(addprefix $(PATH_SRCS),\
-		test.c \
-		rainbow.c)
+		main.c \
+		mandelbrot.c \
+		hooks.c)
 
 OBJ =	$(SRC:%.c=$(PATH_OBJ)%.o)
 
