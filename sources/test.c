@@ -1,21 +1,19 @@
 #include "fractol.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
+// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// {
+// 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
+// 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+// 	*(unsigned int*)dst = color;
+// }
 
-int	close_window(int keycode, t_vars *vars)
+int	handle_keypress(int keysym, t_vars *vars)
 {
-	if(keycode == ESC)
+	if(keysym == XK_Escape)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
-		mlx_destroy_display(vars->mlx);
-		free(vars->mlx);
-		exit(0);
+		vars->win = NULL;
 	}
 	return (0);
 }
@@ -23,15 +21,21 @@ int	close_window(int keycode, t_vars *vars)
 int	main(void)
 {
 	t_vars	vars;
-	t_data	img;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 500, 500, "Hello World!");
-	img.img = mlx_new_image(vars.mlx, 500, 500);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	rainbow(&img);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_hook(vars.win, 2, 1L<<0, close_window, &vars);
+	if (vars.mlx == NULL)
+		return (MLX_ERROR);
+	vars.win = mlx_new_window(vars.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello World!");
+	if (vars.win == NULL)
+	{
+		free(vars.win); //teoricamente aqui é o vars.win q tem q ser free, mas quero trocar pro vars.mlx pra ver qual dos dois dá leak
+		return (MLX_ERROR);
+	}
+	mlx_loop_hook(vars.mlx, &render, &vars);
+	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_keypress, &vars);
 	mlx_loop(vars.mlx);
+	mlx_destroy_display(vars.mlx);
+	free(vars.mlx);
+	exit(0);
 	return (0);
 }
