@@ -4,8 +4,15 @@ PATH_OBJ = ./objects/
 
 SRC =	$(addprefix $(PATH_SRCS),\
 		main.c \
+		init.c \
 		mandelbrot.c \
-		hooks.c)
+		julia.c \
+		tricorn.c \
+		keyhooks.c \
+		mousehooks.c \
+		atof.c \
+		colorselect.c \
+		colors.c)
 
 OBJ =	$(SRC:%.c=$(PATH_OBJ)%.o)
 

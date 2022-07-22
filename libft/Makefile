@@ -6,7 +6,7 @@
 #    By: guribeir <guribeir@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/20 16:51:50 by guribeir          #+#    #+#              #
-#    Updated: 2022/05/17 15:13:54 by guribeir         ###   ########.fr        #
+#    Updated: 2022/07/22 23:13:32 by guribeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c \
 ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c \
 ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
 ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c \
-ft_toupper.c
+ft_toupper.c ft_strcmp.c ft_isspace.c
 
 OBJ = $(SRCS:.c=.o)
 

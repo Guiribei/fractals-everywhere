@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guribeir <guribeir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 17:59:48 by guribeir          #+#    #+#             */
-/*   Updated: 2022/04/28 21:53:45 by guribeir         ###   ########.fr       */
+/*   Created: 2022/07/17 20:00:35 by guribeir          #+#    #+#             */
+/*   Updated: 2022/07/21 04:43:36 by guribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fractol.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+int	julia(t_fractol *fr, double zr, double zi)
 {
-	t_list	*temp;
+	int		n;
+	double	aux;
 
-	if (!*lst || !del)
-		return ;
-	while (*lst)
+	n = 0;
+	while (n < MAX_ITERATIONS)
 	{
-		temp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = temp;
+		if (zr * zr + zi * zi > 4.0)
+			break ;
+		aux = 2 * zr * zi + fr->ki;
+		zr = zr * zr - zi * zi + fr->kr;
+		zi = aux;
+		n++;
 	}
-	*lst = NULL;
+	return (n);
 }

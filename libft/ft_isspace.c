@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guribeir <guribeir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 14:48:25 by guribeir          #+#    #+#             */
-/*   Updated: 2022/07/17 17:43:06 by guribeir         ###   ########.fr       */
+/*   Created: 2022/07/20 19:36:50 by guribeir          #+#    #+#             */
+/*   Updated: 2022/07/20 19:37:20 by guribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-int	handle_keypress(int keysym, t_vars *va)
+int	ft_isspace(int c)
 {
-	if (keysym == XK_Escape)
-	{
-		mlx_destroy_window(va->mlx, va->win);
-		va->win = NULL;
-	}
-	return (0);
-}
-
-int	exit_hook(t_vars *va)
-{
-	mlx_destroy_window(va->mlx, va->win);
-	va->win = NULL;
+	if ((c >= 9 && c <= 13) || c == ' ')
+		return (c);
 	return (0);
 }
